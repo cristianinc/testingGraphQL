@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -12,8 +17,18 @@ export class UsuarioService {
     @InjectModel(Usuario.name) private usuarioModel: Model<UsuarioDocument>,
   ) {}
 
-  create(createUsuarioDto: CreateUsuarioDto) {
-    return 'This action adds a new usuario';
+  async create(createUsuarioDto: CreateUsuarioDto) {
+    const email = createUsuarioDto.email;
+
+      const existeEmail = this.usuarioModel.findOne({ email });
+      if (existeEmail) {
+        .cat
+      }
+      const newUsuario = new this.usuarioModel(createUsuarioDto);
+      await newUsuario.save();
+
+      return newUsuario;
+
   }
 
   findAll(): Promise<Usuario[]> {
@@ -21,7 +36,7 @@ export class UsuarioService {
     //return `This action returns all usuario`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.usuarioModel.findById(id).exec();
     //return `This action returns a #${id} usuario`;
   }
