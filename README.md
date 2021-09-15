@@ -71,3 +71,11 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+npm i --save @nestjs/graphql graphql-tools graphql apollo-server-express
+npm i --save class-validator
+npm i ts-morph @apollo/gateway
+tsc src/generate-typings.ts //marca un erorr pero funciona igual
+node src/generate-typings.js
