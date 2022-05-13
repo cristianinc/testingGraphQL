@@ -7,7 +7,7 @@ import { VideoModule } from './video/video.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://mean_user:zWaTCZss0Rhh3G94@cluster0.rlyjz.gcp.mongodb.net/hospitaldb?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true',
+      'mongodb+srv://conexion con la base mongo',
     ),
     UsuarioModule,
     VideoModule,
